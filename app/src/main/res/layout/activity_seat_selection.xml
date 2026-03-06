@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#BDBDBD">
+
+    <!-- Back Button Circle -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/circle_bg"
+        android:padding="12dp"
+        android:src="@drawable/ic_arrow_back"
+        android:elevation="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Movie Name -->
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oppenheimer"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <!-- Rating + Language -->
+    <LinearLayout
+        android:id="@+id/layoutRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="36dp"
+            android:layout_height="28dp"
+            android:background="@drawable/green_bg"
+            android:paddingStart="10dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="4dp"
+            android:text="+13"
+            android:textColor="@android:color/white"
+            android:textSize="8sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" EN "
+            android:layout_marginStart="8dp"
+            android:textColor="@android:color/white"
+            android:padding="4dp"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" ScreenX"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="8dp"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <!-- Bottom Info Row -->
+    <LinearLayout
+        android:id="@+id/layoutInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutRating">
+
+        <!-- Theater -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Theater"
+                android:textColor="#E0E0E0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stars (90°Mall)"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Hall -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hall"
+                android:textColor="#E0E0E0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1st"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Date -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textColor="#E0E0E0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13.04.2025"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Time -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textColor="#E0E0E0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22:15"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/seat_selection_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/layoutInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Screen Indicator -->
+            <TextView
+                android:id="@+id/screen_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="SCREEN"
+                android:textColor="#00FF00"
+                android:textStyle="bold" />
+
+            <!-- Seats Grid -->
+            <GridLayout
+                android:id="@+id/seats_grid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:columnCount="4"
+                android:columnOrderPreserved="false"
+                android:rowCount="5"
+                android:rowOrderPreserved="false"
+                android:useDefaultMargins="true"
+                android:backgroundTint="@null"
+
+                >
+
+                <!-- Row 1 -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+                <!-- Row 2 -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <!-- Row 3 -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <!-- Row 4 -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <!-- Row 5 -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/green_bg"
+                    android:backgroundTint="@null"/>
+
+            </GridLayout>
+
+            <!-- Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/book_seats_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="63dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FF0000"
+                    android:text="Book Seats"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/proceed_snacks_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="67dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="Proceed to Snacks"
+                    android:textColor="#000000" />
+            </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

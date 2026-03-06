@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Assignment_1</string>
+    <string name="Today">Today</string>
+    <string name="Tom">Tomorrow</string>
+    <string name="cinefast"><![CDATA[
+    <font color="#FFFFFF">Cine</font><font color="#FF0000">Fast</font>
+]]></string>
+
+
+</resources>
