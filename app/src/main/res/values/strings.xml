@@ -5,6 +5,8 @@
     <string name="cinefast"><![CDATA[
     <font color="#FFFFFF">Cine</font><font color="#FF0000">Fast</font>
 ]]></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
