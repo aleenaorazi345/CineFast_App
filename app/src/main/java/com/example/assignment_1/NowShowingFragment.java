@@ -96,15 +96,15 @@ public class NowShowingFragment extends Fragment {
 // Add movies with image/logo
         list.add(new MovieDetails("The Dark Knight",
                 "https://www.youtube.com/watch?v=EXeTwQWrcwY",
-                R.drawable.dark_knight));
+                R.drawable.dark_knight,false));
 
         list.add(new MovieDetails("Titanic",
                 "https://www.youtube.com/watch?v=kVrqfYjkTdQ",
-                R.drawable.titanic));
+                R.drawable.titanic,false));
 
         list.add(new MovieDetails("Interstellar",
                 "https://www.youtube.com/watch?v=zSWdZVtXT7E",
-                R.drawable.intersteller));
+                R.drawable.intersteller,false));
         adapter = new MovieAdapter(getContext(), list);
         recyclerView.setAdapter(adapter);
 

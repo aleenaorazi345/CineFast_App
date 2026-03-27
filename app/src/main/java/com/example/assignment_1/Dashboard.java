@@ -1,6 +1,7 @@
 package com.example.assignment_1;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,8 +36,10 @@ public class Dashboard extends AppCompatActivity {
             // Show HomeFragment
             manager.beginTransaction()
                     .show(homeFragment)
+
                     .addToBackStack(null) // optional: allows back press to hide
                     .commit();
+                     btnOpenSecondActiivty.setVisibility(View.GONE); // ✅ correct
         });
     }
 }

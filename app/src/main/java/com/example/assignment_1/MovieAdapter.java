@@ -3,6 +3,7 @@ package com.example.assignment_1;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         ImageButton btnTrailer;
         Button btnBook;
         ImageView movieImage; // poster
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -62,9 +65,23 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         });
 
         holder.btnBook.setOnClickListener(v -> {
-            Intent intent = new Intent(context, SeatSelection.class);
-            intent.putExtra("name_key", movie.getName());
-            context.startActivity(intent);
+            // Create fragment instance
+            MovieSeatSelection fragment = new MovieSeatSelection();
+
+            // Pass movie data using Bundle
+            Bundle bundle = new Bundle();
+            bundle.putString("name_key", movie.getName());
+            bundle.putBoolean("coming_soon_key", movie.isComingSoon()); // if you have this field
+            bundle.putString("trailer_url", movie.getTrailerUrl());     // optional
+            fragment.setArguments(bundle);
+
+            // Replace fragment in your container
+            AppCompatActivity activity = (AppCompatActivity) context;
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment) // your FrameLayout container ID
+                    .addToBackStack(null) // so back button works
+                    .commit();
         });
     }
 

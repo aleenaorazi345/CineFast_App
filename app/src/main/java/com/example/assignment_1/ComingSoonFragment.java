@@ -91,17 +91,17 @@ public class ComingSoonFragment extends Fragment {
 
 
 // Add movies with image/logo
-        list.add(new MovieDetails("The Dark Knight",
-                "https://www.youtube.com/watch?v=EXeTwQWrcwY",
-                R.drawable.dark_knight));
+        list.add(new MovieDetails("Aag Lagay Basti Mein",
+                "https://www.youtube.com/watch?v=KozPWehBjvs",
+                R.drawable.agg_lagay,true));
 
-        list.add(new MovieDetails("Titanic",
+        list.add(new MovieDetails("Young sheldon",
                 "https://www.youtube.com/watch?v=kVrqfYjkTdQ",
-                R.drawable.titanic));
+                R.drawable.titanic,true));
 
-        list.add(new MovieDetails("Interstellar",
+        list.add(new MovieDetails("Megan",
                 "https://www.youtube.com/watch?v=zSWdZVtXT7E",
-                R.drawable.intersteller));
+                R.drawable.intersteller,true));
         adapter = new MovieAdapter(getContext(), list);
         recyclerView.setAdapter(adapter);
 
