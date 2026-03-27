@@ -110,10 +110,28 @@ public class MovieSeatSelection extends Fragment {
         // Case 1: Book directly (Skip Snacks)
         btnPrimary.setOnClickListener(v -> {
             Toast.makeText(getContext(), "Booking Confirmed!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getActivity(), Tickets.class);
-            intent.putExtra("name", tvName.getText().toString());
-            intent.putExtra("seats", selectedCount);
-            startActivity(intent);
+
+            // 1. Create the Fragment instance
+            Tickets_Fragment ticketFrag = new Tickets_Fragment();
+
+            // 2. Create a Bundle to pass the data (replacing Intent extras)
+            Bundle args = new Bundle();
+            args.putString("name", tvName.getText().toString());
+            args.putInt("seats", selectedCount);
+
+            // Calculate a basic total (e.g., $10 per seat) since snacks are skipped
+            int ticketPrice = selectedCount * 10;
+            args.putInt("total", ticketPrice);
+            args.putInt("quantity", 0); // No snacks selected
+
+            // 3. Set the arguments to the fragment
+            ticketFrag.setArguments(args);
+
+            // 4. Perform the Fragment Transaction
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, ticketFrag)
+                    .addToBackStack(null) // Allows user to navigate back
+                    .commit();
         });
 
         // Case 2: Navigate to SnackFragment
