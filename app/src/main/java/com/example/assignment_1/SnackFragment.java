@@ -45,14 +45,59 @@ public class SnackFragment extends Fragment {
         adapter = new SnackAdapter(getContext(), snackList);
         snackListView.setAdapter(adapter);
 
+
         // 5. Confirm Button Logic
         if (btnConfirm != null) {
             btnConfirm.setOnClickListener(v -> {
-                int totalItems = 0;
+                int totalQuantity = 0;
+                double snacksCost = 0;
+
+                // 1. Calculate snack totals from the list
                 for (Snack s : snackList) {
-                    totalItems += s.getQuantity();
+                    totalQuantity += s.getQuantity();
+                    snacksCost += (s.getQuantity() * s.getPrice());
                 }
-                Toast.makeText(getContext(), "Order Confirmed! Total items: " + totalItems, Toast.LENGTH_SHORT).show();
+
+                if (totalQuantity == 0) {
+                    Toast.makeText(getContext(), "Please select at least one snack!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // 2. Get Movie data passed from Seat Selection Fragment
+                String movieName = "Unknown";
+                int seatsNum = 0;
+                if (getArguments() != null) {
+                    movieName = getArguments().getString("name", "Unknown");
+                    seatsNum = getArguments().getInt("seats", 0);
+                }
+
+                // 3. Calculate Final Total (Seats at $10 each + Snacks)
+                int totalCost = (seatsNum * 10) + (int) snacksCost;
+
+                // 4. Prepare Bundle to pass to Tickets_Fragment
+                Bundle args = new Bundle();
+                args.putString("name", movieName);
+                args.putInt("seats", seatsNum);
+                args.putInt("quantity", totalQuantity);
+                args.putInt("snacksCost", (int) snacksCost);
+                args.putInt("total", totalCost);
+
+                // Pass individual quantities for the receipt
+                args.putInt("quantity1", snackList.get(0).getQuantity()); // Popcorn
+                args.putInt("quantity2", snackList.get(1).getQuantity()); // Nachos
+                args.putInt("quantity3", snackList.get(2).getQuantity()); // Coke
+                args.putInt("quantity4", snackList.get(3).getQuantity()); // Hotdog
+
+                // 5. Navigate to Tickets_Fragment
+                Tickets_Fragment ticketFrag = new Tickets_Fragment();
+                ticketFrag.setArguments(args);
+
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, ticketFrag)
+                        .addToBackStack(null)
+                        .commit();
+
+                Toast.makeText(getContext(), "Booking Confirmed!", Toast.LENGTH_SHORT).show();
             });
         }
 

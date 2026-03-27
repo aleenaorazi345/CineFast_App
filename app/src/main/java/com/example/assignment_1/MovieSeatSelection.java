@@ -137,12 +137,20 @@ public class MovieSeatSelection extends Fragment {
         // Case 2: Navigate to SnackFragment
         btnSecondary.setOnClickListener(v -> {
             Toast.makeText(getContext(), "Moving to Snacks...", Toast.LENGTH_SHORT).show();
+            SnackFragment snackFragment = new SnackFragment();
 
-            // Perform Fragment Transaction
+            Bundle args = new Bundle();
+            args.putString("name", tvName.getText().toString());
+            args.putInt("seats", selectedCount);
+
+            snackFragment.setArguments(args);
+
             getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new SnackFragment()) // R.id.fragment_container is the ID in your Activity layout
-                    .addToBackStack(null) // Allows user to go back to seat selection
+                    .replace(R.id.fragment_container, snackFragment)
+                    .addToBackStack(null)
                     .commit();
+
+
         });
     }
 
